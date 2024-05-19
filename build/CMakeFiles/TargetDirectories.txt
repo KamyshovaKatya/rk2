@@ -1,3 +1,0 @@
-/home/kamyshova/rk2/src/build/CMakeFiles/rk2.dir
-/home/kamyshova/rk2/src/build/CMakeFiles/edit_cache.dir
-/home/kamyshova/rk2/src/build/CMakeFiles/rebuild_cache.dir
