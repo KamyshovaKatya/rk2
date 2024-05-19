@@ -29,7 +29,7 @@ else ()
   enable_testing()
 
   add_executable(${TEST_PROJECT_NAME}
-    .tests/test_main.cpp
+    ./tests/test_main.cpp
     ${GMOCK_TESTS_SOURCE_FILES}
   )
   target_link_libraries(${TEST_PROJECT_NAME} GTest::gtest_main gmock_main)
