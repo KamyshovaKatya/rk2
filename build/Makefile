@@ -129,29 +129,29 @@ rk2/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rk2.dir/build.make CMakeFiles/rk2.dir/build
 .PHONY : rk2/fast
 
-Catalog/Prototype/real1/code/main.o: Catalog/Prototype/real1/code/main.cpp.o
-.PHONY : Catalog/Prototype/real1/code/main.o
+main.o: main.cpp.o
+.PHONY : main.o
 
 # target to build an object file
-Catalog/Prototype/real1/code/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rk2.dir/build.make CMakeFiles/rk2.dir/Catalog/Prototype/real1/code/main.cpp.o
-.PHONY : Catalog/Prototype/real1/code/main.cpp.o
+main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rk2.dir/build.make CMakeFiles/rk2.dir/main.cpp.o
+.PHONY : main.cpp.o
 
-Catalog/Prototype/real1/code/main.i: Catalog/Prototype/real1/code/main.cpp.i
-.PHONY : Catalog/Prototype/real1/code/main.i
+main.i: main.cpp.i
+.PHONY : main.i
 
 # target to preprocess a source file
-Catalog/Prototype/real1/code/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rk2.dir/build.make CMakeFiles/rk2.dir/Catalog/Prototype/real1/code/main.cpp.i
-.PHONY : Catalog/Prototype/real1/code/main.cpp.i
+main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rk2.dir/build.make CMakeFiles/rk2.dir/main.cpp.i
+.PHONY : main.cpp.i
 
-Catalog/Prototype/real1/code/main.s: Catalog/Prototype/real1/code/main.cpp.s
-.PHONY : Catalog/Prototype/real1/code/main.s
+main.s: main.cpp.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-Catalog/Prototype/real1/code/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rk2.dir/build.make CMakeFiles/rk2.dir/Catalog/Prototype/real1/code/main.cpp.s
-.PHONY : Catalog/Prototype/real1/code/main.cpp.s
+main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rk2.dir/build.make CMakeFiles/rk2.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... rk2"
-	@echo "... Catalog/Prototype/real1/code/main.o"
-	@echo "... Catalog/Prototype/real1/code/main.i"
-	@echo "... Catalog/Prototype/real1/code/main.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 

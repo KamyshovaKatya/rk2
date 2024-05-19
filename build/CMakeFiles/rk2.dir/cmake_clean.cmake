@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/rk2.dir/Catalog/Prototype/real1/code/main.cpp.o"
-  "CMakeFiles/rk2.dir/Catalog/Prototype/real1/code/main.cpp.o.d"
+  "CMakeFiles/rk2.dir/main.cpp.o"
+  "CMakeFiles/rk2.dir/main.cpp.o.d"
   "rk2"
   "rk2.pdb"
 )
