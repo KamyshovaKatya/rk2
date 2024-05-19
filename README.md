@@ -1,5 +1,4 @@
-# Design Patterns
+Камышова Екатерина ИУ8-25 РК2
 
-**An Implementation of Design Patterns in C++**
-
-[Brief Tutorial](/Docs/Explanations.md)
+**Ссылка на оригинальный репозиторий**
+https://github.com/amin-amani/DesignPatternsCPP/tree/main/Catalog/Prototype/real1/code

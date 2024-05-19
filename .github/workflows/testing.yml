@@ -2,9 +2,9 @@ name: Testing
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
 
 jobs:
   windows-x64:
@@ -35,8 +35,8 @@ jobs:
 
       - name: Build project
         working-directory: ./
-        run: cmake --build ./build --target interpreter_test
+        run: cmake --build ./build --target prototype_test
 
       - name: Testing project
         working-directory: ./bin/Release/
-        run: ./interpreter_test
+        run: ./prototype_test

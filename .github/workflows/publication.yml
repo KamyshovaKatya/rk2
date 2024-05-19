@@ -35,7 +35,7 @@ jobs:
 
       - name: Build project
         working-directory: ./
-        run: cmake --build ./build --target interpreter --config Release
+        run: cmake --build ./build --target prototype --config Release
 
       - name: Update release
         uses: actions/upload-release-asset@v1
@@ -44,7 +44,7 @@ jobs:
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
           asset_name: Interpreter-${{github.ref_name}}-x64.exe
-          asset_path: ./bin/x64/Release/Interpreter.exe
+          asset_path: ./bin/x64/Release/Prototype.exe
           asset_content_type: application/exe
 
   build_macos:
@@ -59,7 +59,7 @@ jobs:
 
       - name: Build project
         working-directory: ./
-        run: cmake --build ./build --target interpreter
+        run: cmake --build ./build --target prototype
 
       - name: Pack project
         working-directory: ./build/
@@ -72,5 +72,5 @@ jobs:
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
           asset_name: Interpreter-${{github.ref_name}}.dmg
-          asset_path: ./bin/Release/Interpreter-${{github.ref_name}}.dmg
+          asset_path: ./bin/Release/Prototype-${{github.ref_name}}.dmg
           asset_content_type: application/dmg
