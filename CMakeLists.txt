@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 
 
-set(PROJECT_NAME interpreter)
+set(PROJECT_NAME prototype)
 project(${PROJECT_NAME})
 
 
