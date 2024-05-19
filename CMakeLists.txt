@@ -22,5 +22,5 @@ endif()
 
 
 
-#include(CPack.cmake)
+include(CPack.cmake)
 
