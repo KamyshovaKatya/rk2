@@ -21,31 +21,7 @@ jobs:
         with:
           tag_name: ${{ github.ref_name }}
           release_name: Release ${{ github.ref_name }}
-          
 
-  build_windows_x64:
-    runs-on: windows-latest
-    needs: create_release
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Configure project
-        working-directory: ./
-        run: cmake -S ./ -B ./build -DCMAKE_BUILD_TYPE=Release -DCMAKE_BUILD_ARCHITECTURE=x64 -A x64 -DCPACK_PACKAGE_VERSION=${{github.ref_name}}
-
-      - name: Build project
-        working-directory: ./
-        run: cmake --build ./build --target prototype --config Release
-
-      - name: Update release
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ needs.create_release.outputs.upload_url }}
-          asset_name: Interpreter-${{github.ref_name}}-x64.exe
-          asset_path: ./bin/x64/Release/Prototype.exe
-          asset_content_type: application/exe
 
   build_macos:
     runs-on: macos-latest

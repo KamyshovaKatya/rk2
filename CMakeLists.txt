@@ -1,24 +1,21 @@
 cmake_minimum_required(VERSION 3.16)
 
-if (WIN32)
-  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../bin/${CMAKE_BUILD_ARCHITECTURE})
-else ()
-  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../bin/${CMAKE_BUILD_TYPE})
-endif ()
 
 set(PROJECT_NAME interpreter)
 project(${PROJECT_NAME})
 
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(${PROJECT_NAME} ./src/main.cpp)
+add_executable(${PROJECT_NAME} ./main.cpp)
 install(TARGETS ${PROJECT_NAME} DESTINATION ./)
+
 
 if (CPACK_PACKAGE_VERSION)
   include(CPackConfig.cmake)
 else ()
-  set(TEST_PROJECT_NAME interpreter_test)
+  set(TEST_PROJECT_NAME prototype_test)
 
   include(FetchContent)
   FetchContent_Declare(
@@ -32,7 +29,7 @@ else ()
   enable_testing()
 
   add_executable(${TEST_PROJECT_NAME}
-    .tests/test_main.cc
+    .tests/test_main.cpp
     ${GMOCK_TESTS_SOURCE_FILES}
   )
   target_link_libraries(${TEST_PROJECT_NAME} GTest::gtest_main gmock_main)

@@ -7,23 +7,6 @@ on:
     branches: [master]
 
 jobs:
-  windows-x64:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Configure project
-        working-directory: ./
-        run: cmake -S ./ -B ./build -DCMAKE_BUILD_TYPE=Release -DCMAKE_BUILD_ARCHITECTURE=x64 -A x64
-
-      - name: Build project
-        working-directory: ./
-        run: cmake --build ./build --target interpreter_test --config Release
-
-      - name: Testing project
-        working-directory: ./bin/x64/Release/
-        run: ./interpreter_test
-
   macos:
     runs-on: macos-latest
     steps:
