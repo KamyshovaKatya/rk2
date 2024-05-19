@@ -14,7 +14,7 @@ enable_testing()
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 # Добавляем тесты
-add_executable(runTests test_main.cpp)
+add_executable(runTests tests/test_main.cpp)
 
 target_link_libraries(runTests gtest gtest_main)
 add_test(NAME runTests COMMAND runTests)
