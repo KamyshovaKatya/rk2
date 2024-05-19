@@ -1,26 +1,21 @@
 cmake_minimum_required(VERSION 3.10)
 project(rk2)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD 11)
 
-add_executable(rk2 ./main.cpp)
+# Указываем путь к исходным файлам
+add_executable(rk2 main.cpp)
 
-#option(BUILD_TESTS "Build tests" ON)
+# Добавляем Google Test
+add_subdirectory(googletest)
 
-#add_library(src STATIC ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
-#target_include_directories(src PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/)
+enable_testing()
 
-#if(BUILD_TESTS)
-#  enable_testing()
-#  add_subdirectory(third-party/gtest)
-#  file(GLOB SRC_TEST_SOURCES tests/*.cpp)
-#  add_executable(check ${SRC_TEST_SOURCES}) 
-#  target_link_libraries(check src gtest_main)
-#  add_test(NAME check COMMAND check)
-#endif()
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
+# Добавляем тесты
+add_executable(runTests test_main.cpp)
 
-
-#include(CPack.cmake)
+target_link_libraries(runTests gtest gtest_main)
+add_test(NAME runTests COMMAND runTests)
 
