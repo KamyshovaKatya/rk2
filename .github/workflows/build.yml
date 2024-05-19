@@ -14,7 +14,7 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y cmake build-essential libgtest-dev
 
     - name: Configure CMake
-      run: cmake -B build -S src
+      run: cmake -B build -S
 
     - name: Build
       run: cmake --build build
