@@ -1,21 +1,45 @@
-cmake_minimum_required(VERSION 3.10)
-project(rk2)
+cmake_minimum_required(VERSION 3.16)
 
-set(CMAKE_CXX_STANDARD 11)
+if (WIN32)
+  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../bin/${CMAKE_BUILD_ARCHITECTURE})
+else ()
+  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../bin/${CMAKE_BUILD_TYPE})
+endif ()
 
-# Указываем путь к исходным файлам
-add_executable(rk2 main.cpp)
+set(PROJECT_NAME interpreter)
+project(${PROJECT_NAME})
 
-# Добавляем Google Test
-add_subdirectory(googletest)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-enable_testing()
+add_executable(${PROJECT_NAME} ./src/main.cpp)
+install(TARGETS ${PROJECT_NAME} DESTINATION ./)
 
-include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+if (CPACK_PACKAGE_VERSION)
+  include(CPackConfig.cmake)
+else ()
+  set(TEST_PROJECT_NAME interpreter_test)
 
-# Добавляем тесты
-add_executable(runTests tests/test_main.cpp)
+  include(FetchContent)
+  FetchContent_Declare(
+    googletest
+    URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+  )
+  # For Windows: Prevent overriding the parent project's compiler/linker settings
+  set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+  FetchContent_MakeAvailable(googletest)
 
-target_link_libraries(runTests gtest gtest_main)
-add_test(NAME runTests COMMAND runTests)
+  enable_testing()
+
+  add_executable(${TEST_PROJECT_NAME}
+    .tests/test_main.cc
+    ${GMOCK_TESTS_SOURCE_FILES}
+  )
+  target_link_libraries(${TEST_PROJECT_NAME} GTest::gtest_main gmock_main)
+
+  include(GoogleTest)
+  gtest_discover_tests(${TEST_PROJECT_NAME})
+
+  install(TARGETS ${TEST_PROJECT_NAME})
+endif ()
 
