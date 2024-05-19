@@ -1,30 +1,26 @@
-name: CMake Build and Test
+name: Prototype
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
-  build:
+  build_Linux:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
-    - name: Install dependencies
-      run: sudo apt-get update && sudo apt-get install -y cmake build-essential libgtest-dev
+    - name: Adding gtest
+      run: git clone https://github.com/google/googletest.git third-party/gtest -b release-1.11.0
 
-    - name: Configure CMake
-      run: cmake -B build -S .
+    - name: Config webpage_button with tests
+      run: cmake -H. -B ${{github.workspace}}/build -DBUILD_TESTS=OFF
 
-    - name: Build
-      run: cmake --build build
-
-    - name: Run Tests
-      run: ctest --test-dir build
-
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: executable
-        path: build/rk2
-
+    - name: Build webpage_button
+      run: cmake --build ${{github.workspace}}/build  
+  
+    - name: Run tests
+      run: build/check
